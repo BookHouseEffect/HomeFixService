@@ -9,7 +9,7 @@ namespace HomeFixService.WebService.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(HomeFixService.WebService.Models.Context.DatabaseContext context)

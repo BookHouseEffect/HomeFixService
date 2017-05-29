@@ -13,7 +13,7 @@ namespace HomeFixService.WebService.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201705271934596_InitialCreate"; }
+            get { return "201705291018389_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

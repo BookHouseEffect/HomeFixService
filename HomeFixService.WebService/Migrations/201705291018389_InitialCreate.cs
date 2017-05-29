@@ -69,7 +69,7 @@ namespace HomeFixService.WebService.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.Services",
+                "dbo.ProfessionServices",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -77,10 +77,13 @@ namespace HomeFixService.WebService.Migrations
                         ServiceName = c.String(nullable: false),
                         ServiceUnit = c.String(nullable: false),
                         ServiceUnitPrice = c.Single(nullable: false),
+                        UserProfessionId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Id, t.UserId })
+                .ForeignKey("dbo.UserProfessions", t => t.UserProfessionId, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .Index(t => t.UserId)
+                .Index(t => t.UserProfessionId);
             
             CreateTable(
                 "dbo.Contacts",
@@ -145,7 +148,8 @@ namespace HomeFixService.WebService.Migrations
             DropForeignKey("dbo.UserPasswordsHistories", new[] { "CredentialsId", "UserId" }, "dbo.Credentials");
             DropForeignKey("dbo.TimeSchedules", "UserId", "dbo.Users");
             DropForeignKey("dbo.Contacts", "UserId", "dbo.Users");
-            DropForeignKey("dbo.Services", "UserId", "dbo.Users");
+            DropForeignKey("dbo.ProfessionServices", "UserId", "dbo.Users");
+            DropForeignKey("dbo.ProfessionServices", "UserProfessionId", "dbo.UserProfessions");
             DropForeignKey("dbo.Ratings", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserProfessions", "UserId", "dbo.Users");
             DropForeignKey("dbo.BusySchedules", "UserId", "dbo.Users");
@@ -154,7 +158,8 @@ namespace HomeFixService.WebService.Migrations
             DropIndex("dbo.Credentials", new[] { "UserId" });
             DropIndex("dbo.TimeSchedules", new[] { "UserId" });
             DropIndex("dbo.Contacts", new[] { "UserId" });
-            DropIndex("dbo.Services", new[] { "UserId" });
+            DropIndex("dbo.ProfessionServices", new[] { "UserProfessionId" });
+            DropIndex("dbo.ProfessionServices", new[] { "UserId" });
             DropIndex("dbo.Ratings", new[] { "UserId" });
             DropIndex("dbo.UserProfessions", new[] { "UserId" });
             DropIndex("dbo.UserAddresses", new[] { "UserId" });
@@ -163,7 +168,7 @@ namespace HomeFixService.WebService.Migrations
             DropTable("dbo.Credentials");
             DropTable("dbo.TimeSchedules");
             DropTable("dbo.Contacts");
-            DropTable("dbo.Services");
+            DropTable("dbo.ProfessionServices");
             DropTable("dbo.Ratings");
             DropTable("dbo.UserProfessions");
             DropTable("dbo.UserAddresses");

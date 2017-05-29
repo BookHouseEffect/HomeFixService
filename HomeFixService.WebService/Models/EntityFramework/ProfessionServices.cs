@@ -7,12 +7,12 @@ using System.Web;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
-    public class Services : BaseEntity
+    public class ProfessionServices : BaseEntity
     {
         [Required(AllowEmptyStrings = false)]
         public string ServiceName { get; set; }
 
-        [Required(AllowEmptyStrings =false)]
+        [Required(AllowEmptyStrings = false)]
         public string ServiceUnit { get; set; }
 
         [Required]
@@ -23,8 +23,14 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Column(Order = 1), Key]
         public int UserId { get; set; }
 
+        [Required]
+        public int UserProfessionId { get; set; }
+
         [ForeignKey("UserId")]
         public virtual Users TheUserServing { get; set; }
+
+        [ForeignKey("UserProfessionId")]
+        public virtual UserProfessions ProfesionForThisService { get; set; }
 
         //TODO Add currency type enum (MKD, Euro, USD, etc...)
     }

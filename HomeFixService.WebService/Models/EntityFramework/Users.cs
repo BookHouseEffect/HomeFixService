@@ -22,7 +22,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
 
         public virtual List<UserProfessions> ProfessionsThatThisUserKnows { get; set; }
 
-        public virtual List<Services> ServicesThatThisUserOffers { get; set; }
+        public virtual List<ProfessionServices> ServicesThatThisUserOffers { get; set; }
 
         public virtual List<TimeSchedules> TimeScheduleForThisUser { get; set; }
 

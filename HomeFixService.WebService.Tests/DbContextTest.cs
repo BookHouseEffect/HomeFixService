@@ -20,6 +20,11 @@ namespace HomeFixService.WebService.Tests
                 };
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                Assert.AreNotEqual(0, user.Id);
+
+                db.Users.Remove(user);
+                db.SaveChanges();
             }
         }
     }
