@@ -10,6 +10,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
     public class Credentials : BaseEntity
     {
         [Required]
+        [Index("UniqueUserNameIndex", IsUnique = true)]
         public string UserName { get; set; }
 
         [Required]

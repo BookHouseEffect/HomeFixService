@@ -112,12 +112,26 @@
     <Compile Include="Models\EntityFramework\Users.cs" />
     <Compile Include="Models\EntityFramework\UserProfessions.cs" />
     <Compile Include="Models\Enums\Professions.cs" />
+    <Compile Include="Services\Exeptions\ExistingCredentialsFoundException.cs" />
+    <Compile Include="Services\Exeptions\InvalidPasswordException.cs" />
+    <Compile Include="Services\Exeptions\NewPasswordCannotBeAsOneOfOldPasswordsException.cs" />
+    <Compile Include="Services\Exeptions\NoEntryFoundException.cs" />
+    <Compile Include="Persistence\Implementations\ArchiveRepository.cs" />
+    <Compile Include="Persistence\Implementations\BasicPersistence.cs" />
+    <Compile Include="Persistence\Implementations\CredentialsRepository.cs" />
+    <Compile Include="Persistence\Implementations\CrudRepository.cs" />
+    <Compile Include="Persistence\Implementations\UsersRepository.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\HashedAndSaltedPassword.cs" />
+    <Compile Include="Security\PasswordHelper.cs" />
     <Compile Include="Services\Helpers\AccountHelper.cs" />
     <Compile Include="Services\Helpers\ContactHelper.cs" />
     <Compile Include="Services\Helpers\FeedbackHelper.cs" />
     <Compile Include="Services\Helpers\ProfessionHelper.cs" />
     <Compile Include="Services\Helpers\ScheduleHelper.cs" />
+    <Compile Include="Services\Helpers\SearchHelper.cs" />
+    <Compile Include="Services\Implementations\AccountService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -131,7 +145,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Services\Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705291018389_InitialCreate.resx">

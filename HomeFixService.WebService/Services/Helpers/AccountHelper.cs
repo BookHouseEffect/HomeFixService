@@ -19,23 +19,24 @@ namespace HomeFixService.WebService.Services.Helpers
             );
 
         Users UpdateUserInfo(
+            int userId,
             string firstName,
             string lastName
             );
 
-        Credentials AssignUserCredentials(
+        bool AssignUserCredentials(
             int userId,
             string userName,
             string password
             );
 
-        Credentials CheckCredentials(
+        bool CheckCredentials(
             int userId,
             string userName,
             string password
             );
 
-        Credentials ChangePassword(
+        bool ChangePassword(
             int userId,
             string userName,
             string oldPassword,
