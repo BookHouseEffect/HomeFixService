@@ -7,7 +7,7 @@ using System.Web;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
-    public class Contact : BaseEntity
+    public class Contacts : BaseEntity
     {
         [Required(AllowEmptyStrings = false)]
         [DataType(DataType.PhoneNumber)]

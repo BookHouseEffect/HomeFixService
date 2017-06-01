@@ -30,7 +30,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         public virtual Users TheUserServing { get; set; }
 
         [ForeignKey("UserProfessionId")]
-        public virtual UserProfessions ProfesionForThisService { get; set; }
+        public virtual UserProfessions TheProfesionForThisService { get; set; }
 
         //TODO Add currency type enum (MKD, Euro, USD, etc...)
     }

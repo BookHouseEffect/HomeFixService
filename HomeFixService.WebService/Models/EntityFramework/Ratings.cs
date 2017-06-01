@@ -22,6 +22,6 @@ namespace HomeFixService.WebService.Models.EntityFramework
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual Users RatedUser { get; set; }
+        public virtual Users TheRatedUser { get; set; }
     }
 }

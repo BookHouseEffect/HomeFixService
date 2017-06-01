@@ -14,18 +14,18 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Required(AllowEmptyStrings = false)]
         public string UserLastName { get; set; }
 
-        public virtual List<Contact> TheContactsForThisUser { get; set; }
+        public virtual List<Contacts> TheContactsForThisUser { get; set; }
 
-        public virtual List<Ratings> RatingsGivenForThisUser { get; set; }
+        public virtual List<Ratings> TheRatingsGivenForThisUser { get; set; }
 
-        public virtual List<UserAddresses> AddressesThatThisUserLivesOn { get; set; }
+        public virtual List<UserAddresses> TheAddressesThatThisUserWorksOn { get; set; }
 
-        public virtual List<UserProfessions> ProfessionsThatThisUserKnows { get; set; }
+        public virtual List<UserProfessions> TheProfessionsThatThisUserKnows { get; set; }
 
-        public virtual List<ProfessionServices> ServicesThatThisUserOffers { get; set; }
+        public virtual List<ProfessionServices> TheServicesThatThisUserOffers { get; set; }
 
-        public virtual List<TimeSchedules> TimeScheduleForThisUser { get; set; }
+        public virtual List<TimeSchedules> TheTimeScheduleForThisUser { get; set; }
 
-        public virtual List<BusySchedules> BusyScheduleForThisUser { get; set; }
+        public virtual List<BusySchedules> TheBusyScheduleForThisUser { get; set; }
     }
 }

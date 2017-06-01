@@ -3,7 +3,7 @@ namespace HomeFixService.WebService.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -39,6 +39,18 @@ namespace HomeFixService.WebService.Migrations
                         StreetName = c.String(nullable: false),
                         City = c.String(nullable: false),
                         Country = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Id, t.UserId })
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.Contacts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.Int(nullable: false),
+                        PhoneNumber = c.String(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Id, t.UserId })
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
@@ -86,18 +98,6 @@ namespace HomeFixService.WebService.Migrations
                 .Index(t => t.UserProfessionId);
             
             CreateTable(
-                "dbo.Contacts",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.Int(nullable: false),
-                        PhoneNumber = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Id, t.UserId })
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
-            
-            CreateTable(
                 "dbo.TimeSchedules",
                 c => new
                     {
@@ -123,7 +123,8 @@ namespace HomeFixService.WebService.Migrations
                     })
                 .PrimaryKey(t => new { t.Id, t.UserId })
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .Index(t => t.UserId)
+                .Index(t => t.UserName, unique: true, name: "UniqueUserNameIndex");
             
             CreateTable(
                 "dbo.UserPasswordsHistories",
@@ -147,30 +148,31 @@ namespace HomeFixService.WebService.Migrations
             DropForeignKey("dbo.Credentials", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserPasswordsHistories", new[] { "CredentialsId", "UserId" }, "dbo.Credentials");
             DropForeignKey("dbo.TimeSchedules", "UserId", "dbo.Users");
-            DropForeignKey("dbo.Contacts", "UserId", "dbo.Users");
             DropForeignKey("dbo.ProfessionServices", "UserId", "dbo.Users");
             DropForeignKey("dbo.ProfessionServices", "UserProfessionId", "dbo.UserProfessions");
             DropForeignKey("dbo.Ratings", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserProfessions", "UserId", "dbo.Users");
+            DropForeignKey("dbo.Contacts", "UserId", "dbo.Users");
             DropForeignKey("dbo.BusySchedules", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserAddresses", "UserId", "dbo.Users");
             DropIndex("dbo.UserPasswordsHistories", new[] { "CredentialsId", "UserId" });
+            DropIndex("dbo.Credentials", "UniqueUserNameIndex");
             DropIndex("dbo.Credentials", new[] { "UserId" });
             DropIndex("dbo.TimeSchedules", new[] { "UserId" });
-            DropIndex("dbo.Contacts", new[] { "UserId" });
             DropIndex("dbo.ProfessionServices", new[] { "UserProfessionId" });
             DropIndex("dbo.ProfessionServices", new[] { "UserId" });
             DropIndex("dbo.Ratings", new[] { "UserId" });
             DropIndex("dbo.UserProfessions", new[] { "UserId" });
+            DropIndex("dbo.Contacts", new[] { "UserId" });
             DropIndex("dbo.UserAddresses", new[] { "UserId" });
             DropIndex("dbo.BusySchedules", new[] { "UserId" });
             DropTable("dbo.UserPasswordsHistories");
             DropTable("dbo.Credentials");
             DropTable("dbo.TimeSchedules");
-            DropTable("dbo.Contacts");
             DropTable("dbo.ProfessionServices");
             DropTable("dbo.Ratings");
             DropTable("dbo.UserProfessions");
+            DropTable("dbo.Contacts");
             DropTable("dbo.UserAddresses");
             DropTable("dbo.Users");
             DropTable("dbo.BusySchedules");

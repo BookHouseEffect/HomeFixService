@@ -23,6 +23,6 @@ namespace HomeFixService.WebService.Models.EntityFramework
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual Users UserLivingOnThisAddress { get; set; }
+        public virtual Users TheUserLivingOnThisAddress { get; set; }
     }
 }
