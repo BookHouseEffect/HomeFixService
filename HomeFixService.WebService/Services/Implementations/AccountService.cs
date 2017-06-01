@@ -2,23 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using HomeFixService.WebService.Models.EntityFramework;
 using HomeFixService.WebService.Persistence.Implementations;
-using HomeFixService.WebService.Persistence.Exeptions;
+using HomeFixService.WebService.Models.Exeptions;
 using HomeFixService.WebService.Security;
 
 namespace HomeFixService.WebService.Services.Implementations
 {
-    public class AccountService : AccountHelper
+    public class AccountService : BaseService, AccountHelper
     {
-        private UsersRepository UsersRepository;
+        
         private CredentialsRepository CredentialsRepository;
         private ArchiveRepository ArchiveRepository;
 
-        public AccountService()
+        public AccountService() : base()
         {
-            this.UsersRepository = new UsersRepository();
             this.CredentialsRepository = new CredentialsRepository(
                 this.UsersRepository.GetExistingDatabaseContext());
             this.ArchiveRepository = new ArchiveRepository(
@@ -157,11 +155,6 @@ namespace HomeFixService.WebService.Services.Implementations
             user.UserLastName = firstName;
             UsersRepository.Update(user);
             return user;
-        }
-
-        private Users GetUserById(int userId)
-        {
-            return UsersRepository.FindById(userId);
         }
 
         private bool CheckUserPassword(Credentials credentials, string password)

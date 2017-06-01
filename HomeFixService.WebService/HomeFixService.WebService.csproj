@@ -94,15 +94,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705291018389_InitialCreate.cs" />
-    <Compile Include="Migrations\201705291018389_InitialCreate.Designer.cs">
-      <DependentUpon>201705291018389_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201706011646215_Initial.cs" />
+    <Compile Include="Migrations\201706011646215_Initial.Designer.cs">
+      <DependentUpon>201706011646215_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\DatabaseContext.cs" />
     <Compile Include="Models\EntityFramework\BaseEntity.cs" />
     <Compile Include="Models\EntityFramework\BusySchedules.cs" />
-    <Compile Include="Models\EntityFramework\Contact.cs" />
+    <Compile Include="Models\EntityFramework\Contacts.cs" />
     <Compile Include="Models\EntityFramework\Ratings.cs" />
     <Compile Include="Models\EntityFramework\ProfessionServices.cs" />
     <Compile Include="Models\EntityFramework\TimeSchedules.cs" />
@@ -112,12 +112,14 @@
     <Compile Include="Models\EntityFramework\Users.cs" />
     <Compile Include="Models\EntityFramework\UserProfessions.cs" />
     <Compile Include="Models\Enums\Professions.cs" />
-    <Compile Include="Services\Exeptions\ExistingCredentialsFoundException.cs" />
-    <Compile Include="Services\Exeptions\InvalidPasswordException.cs" />
-    <Compile Include="Services\Exeptions\NewPasswordCannotBeAsOneOfOldPasswordsException.cs" />
-    <Compile Include="Services\Exeptions\NoEntryFoundException.cs" />
+    <Compile Include="Models\Exeptions\ExistingCredentialsFoundException.cs" />
+    <Compile Include="Models\Exeptions\InvalidPasswordException.cs" />
+    <Compile Include="Models\Exeptions\NewPasswordCannotBeAsOneOfOldPasswordsException.cs" />
+    <Compile Include="Models\Exeptions\NoEntryFoundException.cs" />
+    <Compile Include="Persistence\Implementations\AddressRepository.cs" />
     <Compile Include="Persistence\Implementations\ArchiveRepository.cs" />
-    <Compile Include="Persistence\Implementations\BasicPersistence.cs" />
+    <Compile Include="Persistence\Implementations\BaseRepository.cs" />
+    <Compile Include="Persistence\Implementations\ContactRepository.cs" />
     <Compile Include="Persistence\Implementations\CredentialsRepository.cs" />
     <Compile Include="Persistence\Implementations\CrudRepository.cs" />
     <Compile Include="Persistence\Implementations\UsersRepository.cs" />
@@ -132,6 +134,8 @@
     <Compile Include="Services\Helpers\ScheduleHelper.cs" />
     <Compile Include="Services\Helpers\SearchHelper.cs" />
     <Compile Include="Services\Implementations\AccountService.cs" />
+    <Compile Include="Services\Implementations\BaseService.cs" />
+    <Compile Include="Services\Implementations\ContactService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -147,8 +151,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705291018389_InitialCreate.resx">
-      <DependentUpon>201705291018389_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706011646215_Initial.resx">
+      <DependentUpon>201706011646215_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

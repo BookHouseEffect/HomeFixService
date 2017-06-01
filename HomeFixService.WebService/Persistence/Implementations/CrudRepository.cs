@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace HomeFixService.WebService.Persistence.Implementations
 {
-    public class CrudRepository<T> : BasicPersistence, IRepository<T> where T : BaseEntity
+    public class CrudRepository<T> : BaseRepository, IRepository<T> where T : BaseEntity
     {
 
         DbSet<T> DbSet;

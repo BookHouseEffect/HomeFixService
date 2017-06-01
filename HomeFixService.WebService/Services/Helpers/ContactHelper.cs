@@ -29,19 +29,20 @@ namespace HomeFixService.WebService.Services.Helpers
             );
 
         bool RemoveUserContactAddress(
-            int userId
+            int userId,
+            int addressId
             );
 
-        Contact AddContactNumber(
+        Contacts AddContactNumber(
             int userId,
             string phoneNumber
             );
-
-        List<Contact> GetAllContactNumbers(
+        
+        List<Contacts> GetAllContactNumbers(
             int userId
             );
 
-        Contact UpdateContactAddress(
+        Contacts UpdateContactAddress(
             int userId,
             int contactId,
             string phoneNumber

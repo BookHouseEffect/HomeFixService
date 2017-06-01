@@ -6,16 +6,16 @@ using System.Web;
 
 namespace HomeFixService.WebService.Persistence.Implementations
 {
-    public abstract class BasicPersistence
+    public abstract class BaseRepository
     {
         protected readonly DatabaseContext DatabaseContext;
 
-        protected BasicPersistence()
+        protected BaseRepository()
         {
             DatabaseContext = new DatabaseContext();
         }
 
-        protected BasicPersistence(DatabaseContext databaseContext)
+        protected BaseRepository(DatabaseContext databaseContext)
         {
             if (databaseContext != null)
                 DatabaseContext = databaseContext;
@@ -28,7 +28,7 @@ namespace HomeFixService.WebService.Persistence.Implementations
             return this.DatabaseContext;
         }
 
-        ~BasicPersistence()
+        ~BaseRepository()
         {
             DatabaseContext.Dispose();
         }

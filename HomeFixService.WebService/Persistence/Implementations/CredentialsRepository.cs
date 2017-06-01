@@ -15,12 +15,23 @@ namespace HomeFixService.WebService.Persistence.Implementations
 
         public Credentials FindByUserName(string userName)
         {
-            return DatabaseContext.Credentials.AsNoTracking().Where(x => x.UserName == userName).SingleOrDefault();
+            return DatabaseContext
+                .Credentials
+                .AsNoTracking()
+                .Where(
+                    x => x.UserName == userName
+                ).SingleOrDefault();
         }
 
         public Credentials FindByUserNameAndUserId(int userId, string userName)
         {
-            return DatabaseContext.Credentials.AsNoTracking().Where(x => x.UserId == userId && x.UserName == userName).SingleOrDefault();
+            return DatabaseContext
+                .Credentials
+                .AsNoTracking()
+                .Where(
+                    x => x.UserId == userId 
+                    && x.UserName == userName
+                ).SingleOrDefault();
         }
     }
 }
