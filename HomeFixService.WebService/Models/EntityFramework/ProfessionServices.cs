@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
@@ -20,17 +16,14 @@ namespace HomeFixService.WebService.Models.EntityFramework
         public float ServiceUnitPrice { get; set; }
 
         [Required]
-        [Column(Order = 1), Key]
-        public int UserId { get; set; }
-
-        [Required]
+        [Column(Order = 1), Key, ForeignKey("TheProfessionForThisService")]
         public int UserProfessionId { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual Users TheUserServing { get; set; }
+        [Required]
+        [Column(Order = 2), Key, ForeignKey("TheProfessionForThisService")]
+        public int UserId { get; set; }
 
-        [ForeignKey("UserProfessionId")]
-        public virtual UserProfessions TheProfesionForThisService { get; set; }
+        public virtual UserProfessions TheProfessionForThisService { get; set; }
 
         //TODO Add currency type enum (MKD, Euro, USD, etc...)
     }

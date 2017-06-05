@@ -60,11 +60,12 @@ namespace HomeFixService.WebService.Migrations
                 "dbo.UserProfessions",
                 c => new
                     {
+                        Id = c.Int(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
                         TheProfession = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.Users", t => t.UserId)
+                .PrimaryKey(t => new { t.Id, t.UserId })
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
@@ -79,23 +80,6 @@ namespace HomeFixService.WebService.Migrations
                 .PrimaryKey(t => new { t.Id, t.UserId })
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
-            CreateTable(
-                "dbo.ProfessionServices",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.Int(nullable: false),
-                        ServiceName = c.String(nullable: false),
-                        ServiceUnit = c.String(nullable: false),
-                        ServiceUnitPrice = c.Single(nullable: false),
-                        UserProfessionId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Id, t.UserId })
-                .ForeignKey("dbo.UserProfessions", t => t.UserProfessionId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.UserProfessionId);
             
             CreateTable(
                 "dbo.TimeSchedules",
@@ -117,7 +101,7 @@ namespace HomeFixService.WebService.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
-                        UserName = c.String(nullable: false),
+                        UserName = c.String(nullable: false, maxLength: 128),
                         PasswordHash = c.String(nullable: false),
                         PasswordSalt = c.String(nullable: false),
                     })
@@ -141,35 +125,48 @@ namespace HomeFixService.WebService.Migrations
                 .ForeignKey("dbo.Credentials", t => new { t.CredentialsId, t.UserId }, cascadeDelete: true)
                 .Index(t => new { t.CredentialsId, t.UserId });
             
+            CreateTable(
+                "dbo.ProfessionServices",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserProfessionId = c.Int(nullable: false),
+                        UserId = c.Int(nullable: false),
+                        ServiceName = c.String(nullable: false),
+                        ServiceUnit = c.String(nullable: false),
+                        ServiceUnitPrice = c.Single(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Id, t.UserProfessionId, t.UserId })
+                .ForeignKey("dbo.UserProfessions", t => new { t.UserProfessionId, t.UserId }, cascadeDelete: true)
+                .Index(t => new { t.UserProfessionId, t.UserId });
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.ProfessionServices", new[] { "UserProfessionId", "UserId" }, "dbo.UserProfessions");
             DropForeignKey("dbo.Credentials", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserPasswordsHistories", new[] { "CredentialsId", "UserId" }, "dbo.Credentials");
             DropForeignKey("dbo.TimeSchedules", "UserId", "dbo.Users");
-            DropForeignKey("dbo.ProfessionServices", "UserId", "dbo.Users");
-            DropForeignKey("dbo.ProfessionServices", "UserProfessionId", "dbo.UserProfessions");
             DropForeignKey("dbo.Ratings", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserProfessions", "UserId", "dbo.Users");
             DropForeignKey("dbo.Contacts", "UserId", "dbo.Users");
             DropForeignKey("dbo.BusySchedules", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserAddresses", "UserId", "dbo.Users");
+            DropIndex("dbo.ProfessionServices", new[] { "UserProfessionId", "UserId" });
             DropIndex("dbo.UserPasswordsHistories", new[] { "CredentialsId", "UserId" });
             DropIndex("dbo.Credentials", "UniqueUserNameIndex");
             DropIndex("dbo.Credentials", new[] { "UserId" });
             DropIndex("dbo.TimeSchedules", new[] { "UserId" });
-            DropIndex("dbo.ProfessionServices", new[] { "UserProfessionId" });
-            DropIndex("dbo.ProfessionServices", new[] { "UserId" });
             DropIndex("dbo.Ratings", new[] { "UserId" });
             DropIndex("dbo.UserProfessions", new[] { "UserId" });
             DropIndex("dbo.Contacts", new[] { "UserId" });
             DropIndex("dbo.UserAddresses", new[] { "UserId" });
             DropIndex("dbo.BusySchedules", new[] { "UserId" });
+            DropTable("dbo.ProfessionServices");
             DropTable("dbo.UserPasswordsHistories");
             DropTable("dbo.Credentials");
             DropTable("dbo.TimeSchedules");
-            DropTable("dbo.ProfessionServices");
             DropTable("dbo.Ratings");
             DropTable("dbo.UserProfessions");
             DropTable("dbo.Contacts");

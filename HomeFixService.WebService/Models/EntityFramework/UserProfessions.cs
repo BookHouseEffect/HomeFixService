@@ -1,17 +1,13 @@
 ﻿using HomeFixService.WebService.Models.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
-    public class UserProfessions
+    public class UserProfessions : BaseEntity
     {
         [Required]
-        [Column(Order =0), Key]
+        [Column(Order =1), Key]
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]

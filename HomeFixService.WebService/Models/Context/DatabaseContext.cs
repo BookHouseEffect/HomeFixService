@@ -1,9 +1,6 @@
 ﻿using HomeFixService.WebService.Models.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace HomeFixService.WebService.Models.Context
 {
@@ -20,5 +17,10 @@ namespace HomeFixService.WebService.Models.Context
         public DbSet<Credentials> Credentials { get; set; }
         public DbSet<UserPasswordsHistory> UserPasswordsHistory { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
-}
+
+ }

@@ -4,19 +4,19 @@ using System.Linq;
 
 namespace HomeFixService.WebService.Persistence.Implementations
 {
-    public class ContactRepository : CrudRepository<Contacts>
+    public class TimeScheduleRepository : CrudRepository<TimeSchedules>
     {
-        public ContactRepository() : base() { }
+        public TimeScheduleRepository() : base() { }
 
-        public ContactRepository(DatabaseContext context) : base(context) { }
+        public TimeScheduleRepository(DatabaseContext context) : base(context) { }
 
-        public Contacts FindByIdAndUserId(int contactId, int userId)
+        public TimeSchedules FindByIdAndUserId(int scheduleId, int userId)
         {
             return DatabaseContext
-                .Contacts
+                .TimeSchedules
                 .AsNoTracking()
                 .Where(
-                    x => x.Id == contactId
+                    x => x.Id == scheduleId
                     && x.UserId == userId
                 ).SingleOrDefault();
         }

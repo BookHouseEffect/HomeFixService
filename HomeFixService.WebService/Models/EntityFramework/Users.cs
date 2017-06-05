@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
@@ -21,8 +18,6 @@ namespace HomeFixService.WebService.Models.EntityFramework
         public virtual List<UserAddresses> TheAddressesThatThisUserWorksOn { get; set; }
 
         public virtual List<UserProfessions> TheProfessionsThatThisUserKnows { get; set; }
-
-        public virtual List<ProfessionServices> TheServicesThatThisUserOffers { get; set; }
 
         public virtual List<TimeSchedules> TheTimeScheduleForThisUser { get; set; }
 

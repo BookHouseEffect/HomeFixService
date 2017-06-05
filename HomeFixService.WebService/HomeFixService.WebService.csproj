@@ -94,9 +94,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706011646215_Initial.cs" />
-    <Compile Include="Migrations\201706011646215_Initial.Designer.cs">
-      <DependentUpon>201706011646215_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201706051106499_Initial.cs" />
+    <Compile Include="Migrations\201706051106499_Initial.Designer.cs">
+      <DependentUpon>201706051106499_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\DatabaseContext.cs" />
@@ -119,9 +119,14 @@
     <Compile Include="Persistence\Implementations\AddressRepository.cs" />
     <Compile Include="Persistence\Implementations\ArchiveRepository.cs" />
     <Compile Include="Persistence\Implementations\BaseRepository.cs" />
+    <Compile Include="Persistence\Implementations\BusyScheduleRepository.cs" />
     <Compile Include="Persistence\Implementations\ContactRepository.cs" />
     <Compile Include="Persistence\Implementations\CredentialsRepository.cs" />
     <Compile Include="Persistence\Implementations\CrudRepository.cs" />
+    <Compile Include="Persistence\Implementations\FeedbackRepository.cs" />
+    <Compile Include="Persistence\Implementations\ProfessionRepository.cs" />
+    <Compile Include="Persistence\Implementations\ServiceRepository.cs" />
+    <Compile Include="Persistence\Implementations\TimeScheduleRepository.cs" />
     <Compile Include="Persistence\Implementations\UsersRepository.cs" />
     <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +141,9 @@
     <Compile Include="Services\Implementations\AccountService.cs" />
     <Compile Include="Services\Implementations\BaseService.cs" />
     <Compile Include="Services\Implementations\ContactService.cs" />
+    <Compile Include="Services\Implementations\FeedbackService.cs" />
+    <Compile Include="Services\Implementations\ProfessionService.cs" />
+    <Compile Include="Services\Implementations\ScheduleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -151,8 +159,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706011646215_Initial.resx">
-      <DependentUpon>201706011646215_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706051106499_Initial.resx">
+      <DependentUpon>201706051106499_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

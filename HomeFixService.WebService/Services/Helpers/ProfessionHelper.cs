@@ -1,10 +1,6 @@
 ﻿using HomeFixService.WebService.Models.EntityFramework;
 using HomeFixService.WebService.Models.Enums;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeFixService.WebService.Services.Helpers
 {
@@ -21,8 +17,7 @@ namespace HomeFixService.WebService.Services.Helpers
 
         bool RemoveProfessionFromUser(
             int userId,
-            int professionId,
-            Professions profession
+            int professionId
             );
 
         ProfessionServices AddProfessionService(

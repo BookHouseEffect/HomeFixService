@@ -1,9 +1,6 @@
 ﻿using HomeFixService.WebService.Models.EntityFramework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeFixService.WebService.Services.Helpers
 {
@@ -52,7 +49,7 @@ namespace HomeFixService.WebService.Services.Helpers
             DateTime endsOn
             );
 
-        BusySchedules RemoveUserBusyInterval(
+         bool RemoveUserBusyInterval(
             int userId,
             int scheduleId
             );
