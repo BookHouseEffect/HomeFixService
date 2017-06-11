@@ -45,6 +45,7 @@ namespace HomeFixService.WebService.Persistence.Implementations
 
         public void Remove(T item)
         {
+            this.DbSet.Attach(item);
             this.DbSet.Remove(item);
             this.DatabaseContext.SaveChanges();
         }

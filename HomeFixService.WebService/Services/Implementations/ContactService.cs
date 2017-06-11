@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using HomeFixService.WebService.Models.EntityFramework;
 using HomeFixService.WebService.Persistence.Implementations;
 using HomeFixService.WebService.Models.Exeptions;
+using System.Linq;
 
 namespace HomeFixService.WebService.Services.Implementations
 {
@@ -11,7 +12,7 @@ namespace HomeFixService.WebService.Services.Implementations
         private AddressRepository AddressRepository;
         private ContactRepository ContactRepository;
 
-        ContactService() : base()
+        public ContactService() : base()
         {
             this.AddressRepository = new AddressRepository(
                 UsersRepository.GetExistingDatabaseContext());
@@ -43,9 +44,22 @@ namespace HomeFixService.WebService.Services.Implementations
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
+            Contacts existingContact = user.TheContactsForThisUser.Where(x => x.PhoneNumber.Equals(phoneNumber)).FirstOrDefault();
+            if (existingContact != null)
+                return existingContact;
+
             Contacts contact = new Contacts { UserId = user.Id, PhoneNumber = phoneNumber };
             ContactRepository.Add(contact);
             return contact;
+        }
+
+        public List<UserAddresses> GetAllContactAddresses(int userId)
+        {
+            Users user = GetUserById(userId);
+            if (user == null)
+                throw new NoEntryFoundException(userId, typeof(Users).Name);
+
+            return user.TheAddressesThatThisUserWorksOn;
         }
 
         public List<Contacts> GetAllContactNumbers(int userId)
@@ -57,16 +71,7 @@ namespace HomeFixService.WebService.Services.Implementations
             return user.TheContactsForThisUser;
         }
 
-        public List<UserAddresses> GetAllUserContactAddresses(int userId)
-        {
-            Users user = GetUserById(userId);
-            if (user == null)
-                throw new NoEntryFoundException(userId, typeof(Users).Name);
-
-            return user.TheAddressesThatThisUserWorksOn;
-        }
-
-        public bool RemoveUserContactAddress(int userId, int addressId)
+        public bool RemoveContactAddress(int userId, int addressId)
         {
             Users user = GetUserById(userId);
             if (user == null)
@@ -80,7 +85,7 @@ namespace HomeFixService.WebService.Services.Implementations
             return true;
         }
 
-        public bool RemoveUserContactNumber(int userId, int contactId)
+        public bool RemoveContactNumber(int userId, int contactId)
         {
             Users user = GetUserById(userId);
             if (user == null)
@@ -112,7 +117,7 @@ namespace HomeFixService.WebService.Services.Implementations
             return address;
         }
 
-        public Contacts UpdateContactAddress(int userId, int contactId, string phoneNumber)
+        public Contacts UpdateContactNumber(int userId, int contactId, string phoneNumber)
         {
             Users user = GetUserById(userId);
             if (user == null)

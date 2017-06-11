@@ -12,7 +12,7 @@ namespace HomeFixService.WebService.Services.Helpers
             string country
             );
 
-        List<UserAddresses> GetAllUserContactAddresses(
+        List<UserAddresses> GetAllContactAddresses(
             int userId
             );
 
@@ -24,7 +24,7 @@ namespace HomeFixService.WebService.Services.Helpers
             string country
             );
 
-        bool RemoveUserContactAddress(
+        bool RemoveContactAddress(
             int userId,
             int addressId
             );
@@ -38,13 +38,13 @@ namespace HomeFixService.WebService.Services.Helpers
             int userId
             );
 
-        Contacts UpdateContactAddress(
+        Contacts UpdateContactNumber(
             int userId,
             int contactId,
             string phoneNumber
             );
 
-        bool RemoveUserContactNumber(
+        bool RemoveContactNumber(
             int userId,
             int contactId
             );

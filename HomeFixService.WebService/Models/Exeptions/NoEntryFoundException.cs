@@ -6,7 +6,20 @@ namespace HomeFixService.WebService.Models.Exeptions
     {
         public int Id { get; }
         public int UserId { get; }
+        public string UserName { get; }
         public string ExceptionInTable { get; }
+
+        public NoEntryFoundException(string userName, string exceptionInTable)
+            : base(
+                 String.Format(
+                     "No entry with the userName {0} found from {1} table.",
+                     userName,
+                     exceptionInTable)
+                 )
+        {
+            this.UserName = userName;
+            this.ExceptionInTable = exceptionInTable;
+        }
 
         public NoEntryFoundException(int id, string exceptionInTable)
             :base(

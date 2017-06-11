@@ -25,8 +25,7 @@ namespace HomeFixService.WebService.Services.Helpers
             string password
             );
 
-        bool CheckCredentials(
-            int userId,
+        Credentials CheckCredentials(
             string userName,
             string password
             );

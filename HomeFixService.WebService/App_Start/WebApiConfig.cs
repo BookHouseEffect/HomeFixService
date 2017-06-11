@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Headers;
+using System.Web.Http;
 
 namespace HomeFixService.WebService
 {
@@ -16,6 +17,11 @@ namespace HomeFixService.WebService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //JsonSupport
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(
+                new MediaTypeHeaderValue("application/octet-stream"));
+
         }
     }
 }

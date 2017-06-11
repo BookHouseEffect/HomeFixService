@@ -23,13 +23,14 @@ namespace HomeFixService.WebService.Services.Implementations
                 this.UsersRepository.GetExistingDatabaseContext());
         }
 
+
         public bool AssignUserCredentials(int userId, string userName, string password)
         {
             Users user = GetUserById(userId);
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            Credentials existingCredentials = CredentialsRepository.FindById(userId);
+            Credentials existingCredentials = CredentialsRepository.FindByUserId(userId);
             if (existingCredentials != null)
                 throw new ExistingCredentialsFoundException(userId, existingCredentials.Id);
 
@@ -92,21 +93,20 @@ namespace HomeFixService.WebService.Services.Implementations
             return true;
         }
 
-        public bool CheckCredentials(int userId, string userName, string password)
+        public Credentials CheckCredentials(string userName, string password)
         {
-            Users user = GetUserById(userId);
-            if (user == null)
-                throw new NoEntryFoundException(userId, typeof(Users).Name);
-
-            Credentials credentials = CredentialsRepository.FindByUserNameAndUserId(userId, userName);
+            Credentials credentials = CredentialsRepository.FindByUserName(userName);
             if (credentials == null)
-                throw new NoEntryFoundException(userId, typeof(Credentials).Name);
+                throw new NoEntryFoundException(userName, typeof(Credentials).Name);
+
+            if (credentials.TheUserForThisCredential == null)
+                throw new NoEntryFoundException(userName, typeof(Users).Name);
 
             bool validPassword = CheckUserPassword(credentials, password);
             if (!validPassword)
                 throw new InvalidPasswordException();
 
-            return validPassword;
+            return credentials;
         }
 
         public Users CreateUser(string firstName, string lastName)
