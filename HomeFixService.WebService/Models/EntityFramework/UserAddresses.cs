@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
+    [Serializable]
     public class UserAddresses : BaseEntity
     {
         [Required(AllowEmptyStrings = false)]
@@ -19,7 +20,20 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Column(Order = 1), Key]
         public int UserId { get; set; }
 
+        [NonSerialized]
+        private Users _User; 
+
         [ForeignKey("UserId")]
-        public virtual Users TheUserLivingOnThisAddress { get; set; }
+        public virtual Users TheUserLivingOnThisAddress
+        {
+            get
+            {
+                return _User;
+            }
+            set
+            {
+                _User = value;
+            }
+        }
     }
 }

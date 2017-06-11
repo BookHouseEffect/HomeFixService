@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
+    [Serializable]
     public class Contacts : BaseEntity
     {
         [Required(AllowEmptyStrings = false)]
@@ -14,7 +16,20 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Column(Order = 1), Key]
         public int UserId { get; set; }
 
-        [ForeignKey("UserId")]  
-        public virtual Users ThePhoneOwner { get; set; }
+        [NonSerialized]
+        private Users _Owner;
+
+        [ForeignKey("UserId")] 
+        public virtual Users ThePhoneOwner
+        {
+            get
+            {
+                return _Owner;
+            }
+            set
+            {
+                _Owner = value;
+            }
+        }
     }
 }

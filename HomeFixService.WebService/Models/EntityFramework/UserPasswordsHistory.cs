@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
+    [Serializable]
     public class UserPasswordsHistory : BaseEntity
     {
         [Required]
@@ -24,7 +25,20 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Column(Order = 2), Key, ForeignKey("TheCredentialForThisHistory")]
         public int UserId { get; set; }
 
-        public virtual Credentials TheCredentialForThisHistory { get; set; }
+        [NonSerialized]
+        private Credentials _Credential;
+
+        public virtual Credentials TheCredentialForThisHistory
+        {
+            get
+            {
+                return _Credential;
+            }
+            set
+            {
+                _Credential = value;
+            }
+        }
 
     }
 }

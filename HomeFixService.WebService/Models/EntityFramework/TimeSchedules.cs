@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
+    [Serializable]
     public class TimeSchedules : BaseEntity
     {
         [Required]
@@ -23,7 +24,20 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Column(Order = 1), Key]
         public int UserId { get; set; }
 
+        [NonSerialized]
+        private Users _User;
+
         [ForeignKey("UserId")]
-        public virtual Users TheUserThatWorksOnThisSchedule { get; set; }
+        public virtual Users TheUserThatWorksOnThisSchedule
+        {
+            get
+            {
+                return _User;
+            }
+            set
+            {
+                _User = value;
+            }
+        }
     }
 }

@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
+    [Serializable]
     public class Credentials : BaseEntity
     {
         [Required]
@@ -21,9 +23,35 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Column(Order = 1), Key]
         public int UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual Users UserForThisCredential { get; set; }
+        [NonSerialized]
+        private Users _User;
 
-        public virtual List<UserPasswordsHistory> TheHistoryForTheseCredentials { get; set; }
+        [ForeignKey("UserId")]
+        public virtual Users TheUserForThisCredential
+        {
+            get
+            {
+                return _User;
+            }
+            set
+            {
+                _User = value;
+            }
+        }
+
+        [NonSerialized]
+        private List<UserPasswordsHistory> _History;
+
+        public virtual List<UserPasswordsHistory> TheHistoryForTheseCredentials
+        {
+            get
+            {
+                return _History;
+            }
+            set
+            {
+                _History = value;
+            }
+        }
     }
 }
