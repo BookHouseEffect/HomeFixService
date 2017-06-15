@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace HomeFixService.WebService.Controllers
 {
+    [Authorize]
     public class AccountController : BaseController
     {
         [AllowAnonymous]

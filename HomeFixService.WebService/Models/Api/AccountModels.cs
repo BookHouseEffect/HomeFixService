@@ -37,4 +37,5 @@ namespace HomeFixService.WebService.Models.Api
         [Required(AllowEmptyStrings = false)]
         public string Country { get; set; }
     }
+
 }

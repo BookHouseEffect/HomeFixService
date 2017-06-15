@@ -8,24 +8,26 @@ namespace HomeFixService.WebService.Services.Helpers
     {
         TimeSchedules AddWorkingInterval(
             int userId,
-            DayOfWeek workingDay,
+            DayOfWeek startDay,
             TimeSpan startTime,
+            DayOfWeek endDay,
             TimeSpan endTime
             );
 
         TimeSchedules UpdateWokingInterval(
             int userId,
             int scheduleId,
-            DayOfWeek workingDay,
+            DayOfWeek startDay,
             TimeSpan startTime,
+            DayOfWeek endDay,
             TimeSpan endTime
             );
 
-        List<TimeSchedules> GetAllWorkingIntervalForUser(
+        List<TimeSchedules> GetAllWorkingIntervals(
             int userId
             );
 
-        bool RemoveUserWorkingInterval(
+        bool RemoveWorkingInterval(
             int userId,
             int scheduleId
             );
@@ -42,14 +44,14 @@ namespace HomeFixService.WebService.Services.Helpers
             DateTime periodEnds
             );
 
-        BusySchedules UpdateUserInterval(
+        BusySchedules UpdateBusyInterval(
             int userId,
             int scheduleId,
             DateTime startOn,
             DateTime endsOn
             );
 
-         bool RemoveUserBusyInterval(
+         bool RemoveBusyInterval(
             int userId,
             int scheduleId
             );

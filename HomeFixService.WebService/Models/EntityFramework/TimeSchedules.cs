@@ -8,16 +8,17 @@ namespace HomeFixService.WebService.Models.EntityFramework
     public class TimeSchedules : BaseEntity
     {
         [Required]
-        public DayOfWeek WorkingDayOfWeek { get; set; }
+        public DayOfWeek StartDay { get; set; }
 
         [Required]
         [DataType(DataType.Time)]
-        //[Timestamp]
         public TimeSpan StartTime { get; set; }
 
         [Required]
+        public DayOfWeek EndDay { get; set; }
+
+        [Required]
         [DataType(DataType.Time)]
-        //[Timestamp]
         public TimeSpan EndTime { get; set; }
 
         [Required]

@@ -114,18 +114,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Migrations\201706131227281_Initial.cs" />
+    <Compile Include="Migrations\201706131227281_Initial.Designer.cs">
+      <DependentUpon>201706131227281_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Api\AccountModels.cs" />
+    <Compile Include="Models\Api\TimeModels.cs" />
     <Compile Include="Models\Enums\Currency.cs" />
+    <Compile Include="Models\Exeptions\CanNotAddPeriodsInThePastException.cs" />
+    <Compile Include="Models\Exeptions\InvalidPeriodRangeException.cs" />
     <Compile Include="Security\AuthorizeAttribute.cs" />
     <Compile Include="Security\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706051106499_Initial.cs" />
-    <Compile Include="Migrations\201706051106499_Initial.Designer.cs">
-      <DependentUpon>201706051106499_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\DatabaseContext.cs" />
@@ -188,8 +192,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706051106499_Initial.resx">
-      <DependentUpon>201706051106499_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706131227281_Initial.resx">
+      <DependentUpon>201706131227281_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

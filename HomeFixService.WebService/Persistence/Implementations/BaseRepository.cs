@@ -1,8 +1,9 @@
 ﻿using HomeFixService.WebService.Models.Context;
+using System;
 
 namespace HomeFixService.WebService.Persistence.Implementations
 {
-    public abstract class BaseRepository
+    public abstract class BaseRepository : IDisposable
     {
         protected readonly DatabaseContext DatabaseContext;
 
@@ -24,7 +25,7 @@ namespace HomeFixService.WebService.Persistence.Implementations
             return this.DatabaseContext;
         }
 
-        ~BaseRepository()
+        public void Dispose()
         {
             DatabaseContext.Dispose();
         }

@@ -87,8 +87,9 @@ namespace HomeFixService.WebService.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
-                        WorkingDayOfWeek = c.Int(nullable: false),
+                        StartDay = c.Int(nullable: false),
                         StartTime = c.Time(nullable: false, precision: 7),
+                        EndDay = c.Int(nullable: false),
                         EndTime = c.Time(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => new { t.Id, t.UserId })
@@ -135,6 +136,7 @@ namespace HomeFixService.WebService.Migrations
                         ServiceName = c.String(nullable: false),
                         ServiceUnit = c.String(nullable: false),
                         ServiceUnitPrice = c.Single(nullable: false),
+                        CurrencyUsed = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Id, t.UserProfessionId, t.UserId })
                 .ForeignKey("dbo.UserProfessions", t => new { t.UserProfessionId, t.UserId }, cascadeDelete: true)
