@@ -1,5 +1,4 @@
-﻿using HomeFixService.WebService.Models.Enums;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,6 +12,9 @@ namespace HomeFixService.WebService.Models.EntityFramework
         public int UserId { get; set; }
 
         [Required]
+        public int ProfessionId { get; set; }
+
+        [ForeignKey("ProfessionId")]
         public Professions TheProfession { get; set; }
 
         [NonSerialized]

@@ -1,6 +1,9 @@
 namespace HomeFixService.WebService.Migrations
 {
     using System.Data.Entity.Migrations;
+    using HomeFixService.WebService.Extensions;
+    using HomeFixService.WebService.Models.EntityFramework;
+    using HomeFixService.WebService.Models.Enums;
 
     internal sealed class Configuration : DbMigrationsConfiguration<HomeFixService.WebService.Models.Context.DatabaseContext>
     {
@@ -11,18 +14,11 @@ namespace HomeFixService.WebService.Migrations
 
         protected override void Seed(HomeFixService.WebService.Models.Context.DatabaseContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Professions.SeedEnumValues<Professions, ProfessionsEnum>(@enum => @enum);
+            context.SaveChanges();
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Currencies.SeedEnumValues<Currencies, CurrencyEnum>(@enum => @enum);
+            context.SaveChanges();
         }
     }
 }

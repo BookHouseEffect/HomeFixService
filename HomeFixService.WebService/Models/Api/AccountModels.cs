@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HomeFixService.WebService.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace HomeFixService.WebService.Models.Api
 {
@@ -38,4 +39,31 @@ namespace HomeFixService.WebService.Models.Api
         public string Country { get; set; }
     }
 
+    public class ProfessionModel
+    {
+        [Required]
+        public ProfessionsEnum ProfessionToAssign { get; set; }
+    }
+
+    public class ProfessionServiceModel
+    { 
+        [Required(AllowEmptyStrings = false)]
+        public string ServiceName { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        public string ServiceUnit { get; set; }
+
+        [Required]
+        public float ServiceUnitPrice { get; set; }
+
+        [Required]
+        public CurrencyEnum Currency { get; set; }
+
+    }
+
+    public class AddProfessionServiceModel : ProfessionServiceModel
+    {
+        [Required]
+        public int UserProfessionId { get; set; }
+    }
 }

@@ -12,7 +12,7 @@ namespace HomeFixService.WebService.Services.Implementations
         private ProfessionRepository ProfessionRepository;
         private ServiceRepository ServiceRepository;
 
-        ProfessionService() : base()
+        public ProfessionService() : base()
         {
             this.ProfessionRepository = new ProfessionRepository(
                 UsersRepository.GetExistingDatabaseContext());
@@ -20,15 +20,15 @@ namespace HomeFixService.WebService.Services.Implementations
                 UsersRepository.GetExistingDatabaseContext());
         }
 
-        public ProfessionServices AddProfessionService(int userId, int professionId, string serviceName, string serviceUnit, float serviceUnitPrice)
+        public ProfessionServices AddProfessionService(int userId, int professionId, string serviceName, string serviceUnit, float serviceUnitPrice, CurrencyEnum currency)
         {
             Users user = GetUserById(userId);
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            UserProfessions profession = ProfessionRepository.GetByIdAndUserId(professionId, userId);
+            UserProfessions profession = ProfessionRepository.GetByIdAndUserId(professionId, user.Id);
             if (profession == null)
-                throw new NoEntryFoundException(professionId, userId, typeof(UserProfessions).Name);
+                throw new NoEntryFoundException(professionId, user.Id, typeof(UserProfessions).Name);
 
             ProfessionServices service = new ProfessionServices
             {
@@ -36,31 +36,32 @@ namespace HomeFixService.WebService.Services.Implementations
                 UserProfessionId = profession.Id,
                 ServiceName = serviceName,
                 ServiceUnit = serviceUnit,
-                ServiceUnitPrice = serviceUnitPrice
+                ServiceUnitPrice = serviceUnitPrice,
+                ServiceUnitId = (int)currency
             };
 
             ServiceRepository.Add(service);
-            return service;
+            return ServiceRepository.GetByIdAndUserId(service.Id, user.Id);
         }
 
-        public UserProfessions AssignProfessionToUser(int userId, Professions profession)
+        public UserProfessions AssignProfessionToUser(int userId, ProfessionsEnum profession)
         {
             Users user = GetUserById(userId);
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            UserProfessions existingProfession = ProfessionRepository.GetByUserIdAndProfession(userId, profession);
+            UserProfessions existingProfession = ProfessionRepository.GetByUserIdAndProfession(user.Id, profession);
             if (existingProfession != null)
                 return existingProfession;
             
             UserProfessions userProfession = new UserProfessions
             {
-                UserId = userId,
-                TheProfession = profession
+                UserId = user.Id,
+                ProfessionId = (int)profession
             };
 
             ProfessionRepository.Add(userProfession);
-            return userProfession;
+            return ProfessionRepository.GetByIdAndUserId(userProfession.Id, user.Id);
         }
 
         public List<ProfessionServices> GetAllProfessionServices(int userId, int professionId)
@@ -69,9 +70,9 @@ namespace HomeFixService.WebService.Services.Implementations
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            UserProfessions profession = ProfessionRepository.GetByIdAndUserId(professionId, userId);
+            UserProfessions profession = ProfessionRepository.GetByIdAndUserId(professionId, user.Id);
             if (profession == null)
-                throw new NoEntryFoundException(professionId, userId, typeof(UserProfessions).Name);
+                throw new NoEntryFoundException(professionId, user.Id, typeof(UserProfessions).Name);
 
             return ServiceRepository.GetServicesByUserIdAndProfessionId(user.Id, profession.Id);
         }
@@ -82,7 +83,7 @@ namespace HomeFixService.WebService.Services.Implementations
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            return user.TheProfessionsThatThisUserKnows;
+            return ProfessionRepository.GetProfessionsByUserId(user.Id);
         }
 
         public List<ProfessionServices> GetAllUserServices(int userId)
@@ -94,15 +95,25 @@ namespace HomeFixService.WebService.Services.Implementations
             return ServiceRepository.GetByUserId(user.Id);
         }
 
+        public List<Currencies> GetCurrenciesList()
+        {
+            return ServiceRepository.GetListOfCurrencies();
+        }
+
+        public List<Professions> GetProfessionsList()
+        {
+            return ProfessionRepository.GetListOfProfessions();
+        }
+
         public bool RemoveProfessionFromUser(int userId, int professionId)
         {
             Users user = GetUserById(userId);
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            UserProfessions userProfession = ProfessionRepository.GetByIdAndUserId(professionId, userId);
+            UserProfessions userProfession = ProfessionRepository.GetByIdAndUserId(professionId, user.Id);
             if (userProfession == null)
-                throw new NoEntryFoundException(professionId, userId, typeof(UserProfessions).Name);
+                throw new NoEntryFoundException(professionId, user.Id, typeof(UserProfessions).Name);
 
             ProfessionRepository.Remove(userProfession);
             return true;
@@ -114,30 +125,31 @@ namespace HomeFixService.WebService.Services.Implementations
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            ProfessionServices service = ServiceRepository.GetByIdAndUserId(serviceId, userId);
+            ProfessionServices service = ServiceRepository.GetByIdAndUserId(serviceId, user.Id);
             if (service == null)
-                throw new NoEntryFoundException(serviceId, userId, typeof(ProfessionServices).Name);
+                throw new NoEntryFoundException(serviceId, user.Id, typeof(ProfessionServices).Name);
 
             ServiceRepository.Remove(service);
             return true;
         }
 
-        public ProfessionServices UpdateProfessionService(int userId, int serviceId, string serviceName, string serviceUnit, float serviceUnitPrice)
+        public ProfessionServices UpdateProfessionService(int userId, int serviceId, string serviceName, string serviceUnit, float serviceUnitPrice, CurrencyEnum currency)
         {
             Users user = GetUserById(userId);
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            ProfessionServices existingService = ServiceRepository.GetByIdAndUserId(serviceId, userId);
+            ProfessionServices existingService = ServiceRepository.GetByIdAndUserId(serviceId, user.Id);
             if (existingService == null)
                 throw new NoEntryFoundException(serviceId, userId, typeof(ProfessionServices).Name);
 
             existingService.ServiceName = serviceName;
             existingService.ServiceUnit = serviceUnit;
             existingService.ServiceUnitPrice = serviceUnitPrice;
+            existingService.ServiceUnitId = (int)currency;
 
             ServiceRepository.Update(existingService);
-            return existingService;
+            return ServiceRepository.GetByIdAndUserId(existingService.Id, user.Id); ;
         }
     }
 }

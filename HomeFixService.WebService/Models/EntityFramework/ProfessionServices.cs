@@ -1,5 +1,4 @@
-﻿using HomeFixService.WebService.Models.Enums;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,7 +18,10 @@ namespace HomeFixService.WebService.Models.EntityFramework
         public float ServiceUnitPrice { get; set; }
 
         [Required]
-        public Currency CurrencyUsed { get; set; }
+        public int ServiceUnitId { get; set; }
+
+        [ForeignKey("ServiceUnitId")]
+        public Currencies TheCurrencyUsed { get; set; }
 
         [Required]
         [Column(Order = 1), Key, ForeignKey("TheProfessionForThisService")]

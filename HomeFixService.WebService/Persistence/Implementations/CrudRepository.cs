@@ -1,4 +1,4 @@
-﻿using HomeFixService.WebService.Models;
+﻿using HomeFixService.WebService.Models.EntityFramework;
 using HomeFixService.WebService.Models.Context;
 using System;
 using System.Collections.Generic;

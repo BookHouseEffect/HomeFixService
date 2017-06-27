@@ -6,9 +6,11 @@ namespace HomeFixService.WebService.Services.Helpers
 {
     interface ProfessionHelper
     {
+        List<Professions> GetProfessionsList();
+
         UserProfessions AssignProfessionToUser(
             int userId,
-            Professions profession
+            ProfessionsEnum profession
             );
 
         List<UserProfessions> GetAllUserProfessions(
@@ -25,8 +27,11 @@ namespace HomeFixService.WebService.Services.Helpers
             int professionId,
             string serviceName,
             string serviceUnit,
-            float serviceUnitPrice
+            float serviceUnitPrice,
+            CurrencyEnum currency
             );
+
+        List<Currencies> GetCurrenciesList();
 
         List<ProfessionServices> GetAllProfessionServices(
             int userId,
@@ -42,7 +47,8 @@ namespace HomeFixService.WebService.Services.Helpers
             int serviceId,
             string serviceName,
             string serviceUnit,
-            float serviceUnitPrice
+            float serviceUnitPrice,
+            CurrencyEnum currency
             );
 
         bool RemoveProfessionService(

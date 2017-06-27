@@ -1,6 +1,7 @@
 ﻿using HomeFixService.WebService.Models.Context;
 using HomeFixService.WebService.Models.EntityFramework;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace HomeFixService.WebService.Persistence.Implementations
@@ -18,6 +19,8 @@ namespace HomeFixService.WebService.Persistence.Implementations
                 .AsNoTracking()
                 .Where(
                     x => x.UserId == userId
+                ).Include(
+                    x => x.TheCurrencyUsed
                 ).ToList();
         }
 
@@ -29,6 +32,8 @@ namespace HomeFixService.WebService.Persistence.Implementations
                 .Where(
                     x => x.Id == serviceId
                     && x.UserId == userId
+                ).Include(
+                    x => x.TheCurrencyUsed
                 ).SingleOrDefault();
         }
 
@@ -40,7 +45,16 @@ namespace HomeFixService.WebService.Persistence.Implementations
                 .Where(
                     x => x.UserId == userId
                     && x.UserProfessionId == professionId
+                ).Include(
+                    x => x.TheCurrencyUsed
                 ).ToList();
+        }
+
+        internal List<Currencies> GetListOfCurrencies()
+        {
+            return DatabaseContext
+                .Currencies
+                .ToList();
         }
     }
 }

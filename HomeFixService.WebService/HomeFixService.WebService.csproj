@@ -114,15 +114,32 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ProfessionController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Migrations\201706131227281_Initial.cs" />
     <Compile Include="Migrations\201706131227281_Initial.Designer.cs">
       <DependentUpon>201706131227281_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706242029003_EnumAdded.cs" />
+    <Compile Include="Migrations\201706242029003_EnumAdded.Designer.cs">
+      <DependentUpon>201706242029003_EnumAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706242036008_EnumConnected.cs" />
+    <Compile Include="Migrations\201706242036008_EnumConnected.Designer.cs">
+      <DependentUpon>201706242036008_EnumConnected.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706270116470_CurrencyEnumAdded.cs" />
+    <Compile Include="Migrations\201706270116470_CurrencyEnumAdded.Designer.cs">
+      <DependentUpon>201706270116470_CurrencyEnumAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Api\AccountModels.cs" />
     <Compile Include="Models\Api\TimeModels.cs" />
-    <Compile Include="Models\Enums\Currency.cs" />
+    <Compile Include="Models\EntityFramework\BaseEnumEntity.cs" />
+    <Compile Include="Models\EntityFramework\Currencies.cs" />
+    <Compile Include="Models\EntityFramework\Professions.cs" />
+    <Compile Include="Models\Enums\CurrencyEnum.cs" />
     <Compile Include="Models\Exeptions\CanNotAddPeriodsInThePastException.cs" />
     <Compile Include="Models\Exeptions\InvalidPeriodRangeException.cs" />
     <Compile Include="Security\AuthorizeAttribute.cs" />
@@ -144,7 +161,7 @@
     <Compile Include="Models\EntityFramework\UserPasswordsHistory.cs" />
     <Compile Include="Models\EntityFramework\Users.cs" />
     <Compile Include="Models\EntityFramework\UserProfessions.cs" />
-    <Compile Include="Models\Enums\Professions.cs" />
+    <Compile Include="Models\Enums\ProfessionsEnum.cs" />
     <Compile Include="Models\Exeptions\ExistingCredentialsFoundException.cs" />
     <Compile Include="Models\Exeptions\InvalidPasswordException.cs" />
     <Compile Include="Models\Exeptions\NewPasswordCannotBeAsOneOfOldPasswordsException.cs" />
@@ -194,6 +211,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706131227281_Initial.resx">
       <DependentUpon>201706131227281_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706242029003_EnumAdded.resx">
+      <DependentUpon>201706242029003_EnumAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706242036008_EnumConnected.resx">
+      <DependentUpon>201706242036008_EnumConnected.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706270116470_CurrencyEnumAdded.resx">
+      <DependentUpon>201706270116470_CurrencyEnumAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
