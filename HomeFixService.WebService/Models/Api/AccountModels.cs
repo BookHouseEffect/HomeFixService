@@ -66,4 +66,14 @@ namespace HomeFixService.WebService.Models.Api
         [Required]
         public int UserProfessionId { get; set; }
     }
+
+    public class RateModel
+    {
+        [Required]
+        public int UserId { get; set; }
+
+        [Required]
+        [Range(minimum: 1, maximum: 5)]
+        public int Points { get; set; }
+    }
 }

@@ -10,7 +10,7 @@ namespace HomeFixService.WebService.Services.Helpers
             int points
             );
 
-        List<Ratings> GetUserRatings(
+        double GetUserRating(
             int userId
             );
     }

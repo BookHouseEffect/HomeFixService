@@ -114,6 +114,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
     <Compile Include="Controllers\ProfessionController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -133,6 +134,10 @@
     <Compile Include="Migrations\201706270116470_CurrencyEnumAdded.cs" />
     <Compile Include="Migrations\201706270116470_CurrencyEnumAdded.Designer.cs">
       <DependentUpon>201706270116470_CurrencyEnumAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706271429266_RatingOptimization.cs" />
+    <Compile Include="Migrations\201706271429266_RatingOptimization.Designer.cs">
+      <DependentUpon>201706271429266_RatingOptimization.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Api\AccountModels.cs" />
     <Compile Include="Models\Api\TimeModels.cs" />
@@ -220,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706270116470_CurrencyEnumAdded.resx">
       <DependentUpon>201706270116470_CurrencyEnumAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706271429266_RatingOptimization.resx">
+      <DependentUpon>201706271429266_RatingOptimization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

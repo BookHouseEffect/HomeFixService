@@ -1,6 +1,5 @@
 ﻿using HomeFixService.WebService.Services.Helpers;
 using System;
-using System.Collections.Generic;
 using HomeFixService.WebService.Models.EntityFramework;
 using HomeFixService.WebService.Models.Exeptions;
 using HomeFixService.WebService.Persistence.Implementations;
@@ -11,23 +10,29 @@ namespace HomeFixService.WebService.Services.Implementations
     {
         private FeedbackRepository FeedbackRepository;
 
-        FeedbackService() : base()
+        public FeedbackService() : base()
         {
             this.FeedbackRepository = new FeedbackRepository(
                 UsersRepository.GetExistingDatabaseContext());
         }
 
-        public List<Ratings> GetUserRatings(int userId)
+        public Double GetUserRating(int userId)
         {
             Users user = GetUserById(userId);
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
-            return user.TheRatingsGivenForThisUser;
+            return (double)user.RatingSum / (double)user.RatingCount;
         }
 
         public Ratings RateUser(int userId, int points)
         {
+            /*
+             * TODO ...
+             *      check if user is not rating himself, 
+             *      check if user is not rating other user with same profession,
+             *      authenticate the users that are providing rating by phone number
+            */
             Users user = GetUserById(userId);
             if (user == null)
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
@@ -35,11 +40,16 @@ namespace HomeFixService.WebService.Services.Implementations
             Ratings rate = new Ratings
             {
                 UserId = user.Id,
-                FeedbackPoints = userId,
+                FeedbackPoints = points,
                 FeedbackDateTime = DateTime.UtcNow
             };
 
             FeedbackRepository.Add(rate);
+
+            user.RatingSum += rate.FeedbackPoints;
+            user.RatingCount++;
+            UsersRepository.Update(user);
+
             return rate;
         }
     }

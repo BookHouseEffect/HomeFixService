@@ -13,6 +13,10 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [Required(AllowEmptyStrings = false)]
         public string UserLastName { get; set; }
 
+        public long RatingSum { get; set; }
+
+        public int RatingCount { get; set; }
+
         [NonSerialized]
         private List<Contacts> _Contacts;
 
