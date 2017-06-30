@@ -87,7 +87,7 @@ namespace HomeFixService.WebService.Services.Implementations
 
             HashedAndSaltedPassword newPasswordHash = PasswordHelper.CryptPassword(newPassword);
             credentials.PasswordHash = newPasswordHash.PasswordHash;
-            credentials.PasswordHash = newPasswordHash.PasswordSalt;
+            credentials.PasswordSalt = newPasswordHash.PasswordSalt;
             CredentialsRepository.Update(credentials);
 
             return true;
@@ -152,7 +152,7 @@ namespace HomeFixService.WebService.Services.Implementations
                 throw new NoEntryFoundException(userId, typeof(Users).Name);
 
             user.UserFirstName = firstName;
-            user.UserLastName = firstName;
+            user.UserLastName = lastName;
             UsersRepository.Update(user);
             return user;
         }

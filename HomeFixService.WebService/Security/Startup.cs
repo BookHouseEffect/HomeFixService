@@ -21,12 +21,11 @@ namespace HomeFixService.WebService.Security
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 Provider = myProvider
             };
             app.UseOAuthAuthorizationServer(options);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
 
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);

@@ -3,20 +3,48 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HomeFixService.WebService.Models.Api
 {
-    public class RegisterModel
+    public class UserModel
     {
-        [Required(AllowEmptyStrings =false)]
+        [Required(AllowEmptyStrings = false)]
         public string FirstName { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         public string LastName { get; set; }
+    }
 
+    public class RegisterModel : UserModel
+    { 
         [Required(AllowEmptyStrings = false)]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+    }
+
+    public class RemoveModel
+    {
+        [Required(AllowEmptyStrings = false)]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+
+    public class ChangePasswordModel
+    {
+        [Required(AllowEmptyStrings = false)]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string OldPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
     }
 
     public class PhoneModel
