@@ -123,8 +123,8 @@ namespace HomeFixService.WebService.Controllers
             try
             {
                 Users currentUser = GetUser();
-                newAddress = ContactService.AddContactAddress(
-                    currentUser.Id, model.StreetName, model.City, model.Country);
+                newAddress = ContactService.AddContactAddress(currentUser.Id, 
+                    model.StreetName, model.City, model.Country, model.Latitude, model.Longitude);
 
             }
             catch (Exception ex)
@@ -146,8 +146,8 @@ namespace HomeFixService.WebService.Controllers
             try
             {
                 Users currentUser = GetUser();
-                updatedAddress = ContactService.UpdateContactAddress(
-                    currentUser.Id, id, model.StreetName, model.City, model.Country);
+                updatedAddress = ContactService.UpdateContactAddress(currentUser.Id, id, 
+                    model.StreetName, model.City, model.Country, model.Latitude, model.Longitude);
             }
             catch (Exception ex)
             {

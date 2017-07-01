@@ -9,7 +9,9 @@ namespace HomeFixService.WebService.Services.Helpers
             int userId,
             string streetName,
             string city,
-            string country
+            string country,
+            float latitude,
+            float longitude
             );
 
         List<UserAddresses> GetAllContactAddresses(
@@ -21,7 +23,9 @@ namespace HomeFixService.WebService.Services.Helpers
             int addressid,
             string streetName,
             string city,
-            string country
+            string country,
+            float latitude, 
+            float longitude
             );
 
         bool RemoveContactAddress(

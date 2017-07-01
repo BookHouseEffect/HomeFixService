@@ -65,6 +65,14 @@ namespace HomeFixService.WebService.Models.Api
 
         [Required(AllowEmptyStrings = false)]
         public string Country { get; set; }
+
+        [Required]
+        [Range(minimum: -90.0, maximum: 90.0)]
+        public float Latitude { get; set; }
+
+        [Required]
+        [Range(minimum: -180.0, maximum: 180.0)]
+        public float Longitude { get; set; }
     }
 
     public class ProfessionModel

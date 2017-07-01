@@ -20,7 +20,7 @@ namespace HomeFixService.WebService.Services.Implementations
                 UsersRepository.GetExistingDatabaseContext());
         }
 
-        public UserAddresses AddContactAddress(int userId, string streetName, string city, string country)
+        public UserAddresses AddContactAddress(int userId, string streetName, string city, string country, float latitude, float longitude)
         {
             Users user = GetUserById(userId);
             if (user == null)
@@ -31,7 +31,9 @@ namespace HomeFixService.WebService.Services.Implementations
                 UserId = user.Id,
                 StreetName = streetName,
                 City = city,
-                Country = country
+                Country = country,
+                Latitude = latitude,
+                Longitude = longitude
             };
 
             AddressRepository.Add(address);
@@ -99,7 +101,7 @@ namespace HomeFixService.WebService.Services.Implementations
             return true;
         }
 
-        public UserAddresses UpdateContactAddress(int userId, int addressId, string streetName, string city, string country)
+        public UserAddresses UpdateContactAddress(int userId, int addressId, string streetName, string city, string country, float latitude, float longitude)
         {
             Users user = GetUserById(userId);
             if (user == null)
@@ -112,6 +114,9 @@ namespace HomeFixService.WebService.Services.Implementations
             address.StreetName = streetName;
             address.City = city;
             address.Country = country;
+            address.Latitude = latitude;
+            address.Longitude = longitude;
+
             AddressRepository.Update(address);
 
             return address;

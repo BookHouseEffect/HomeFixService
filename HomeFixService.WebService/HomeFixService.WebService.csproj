@@ -117,7 +117,6 @@
     <Compile Include="Controllers\FeedBackController.cs" />
     <Compile Include="Controllers\ProfessionController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Migrations\201706131227281_Initial.cs" />
     <Compile Include="Migrations\201706131227281_Initial.Designer.cs">
@@ -138,6 +137,10 @@
     <Compile Include="Migrations\201706271429266_RatingOptimization.cs" />
     <Compile Include="Migrations\201706271429266_RatingOptimization.Designer.cs">
       <DependentUpon>201706271429266_RatingOptimization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707011023481_AddressCoordinatesAdded.cs" />
+    <Compile Include="Migrations\201707011023481_AddressCoordinatesAdded.Designer.cs">
+      <DependentUpon>201707011023481_AddressCoordinatesAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Api\AccountModels.cs" />
     <Compile Include="Models\Api\TimeModels.cs" />
@@ -228,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706271429266_RatingOptimization.resx">
       <DependentUpon>201706271429266_RatingOptimization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707011023481_AddressCoordinatesAdded.resx">
+      <DependentUpon>201707011023481_AddressCoordinatesAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
