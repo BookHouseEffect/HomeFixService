@@ -8,46 +8,81 @@
 
 <h3>API Usage Description</h3>
 
-<ul>
-	<li><a href="#topic_1">Registering an user</a></li>
-	<li><a href="#topic_2">Getting a token</a></li>
-	<li><a href="#topic_3">Getting info about the user</a></li>
-	<li><a href="#topic_4">Updating user info</a></li>
-	<li><a href="#topic_5">Changing a password</a></li>
-	<li><a href="#topic_6">Removing user</a></li>
-	<li><a href="#topic_7">Adding a contact number</a></li>
-	<li><a href="#topic_8">Getting contact numbers for user</a></li>
-	<li><a href="#topic_9">Updating a contact number</a></li>
-	<li><a href="#topic_10">Removing a contact number</a></li>
-	<li><a href="#topic_11">Adding a contact address</a></li>
-	<li><a href="#topic_12">Getting contact addresses for user</a></li>
-	<li><a href="#topic_13">Updating a contact address</a></li>
-	<li><a href="#topic_14">Removing a contact address</a></li>
-	<li><a href="#topic_15">Getting build-in enumerated professions list</a></li>
-	<li><a href="#topic_16">Assigning profession to user</a></li>
-	<li><a href="#topic_17">Getting assigned profession for user</a></li>
-	<li><a href="#topic_18">Removing assigned profession from user</a></li>
-	<li><a href="#topic_19">Getting build-in enumerated currency list</a></li>
-	<li><a href="#topic_20">Adding a service for the professions assigned to user</a></li>
-	<li><a href="#topic_21">Getting list of services about a profession for user</a></li>
-	<li><a href="#topic_22">Getting full list of services for user independent from profession</a></li>
-	<li><a href="#topic_23">Updating a service offered by user</a></li>
-	<li><a href="#topic_24">Removing a service offered by user</a></li>
-	<li><a href="#topic_25">Adding a work timeschedule for user</a></li>
-	<li><a href="#topic_26">Getting work timeschedules for user</a></li>
-	<li><a href="#topic_27">Updating a work timeschedule for user</a></li>
-	<li><a href="#topic_28">Removing a work timeschedule for user</a></li>
-	<li><a href="#topic_29">Adding a unavailable period for user</a></li>
-	<li><a href="#topic_30">Getting unavailable periods for user in a given interval</a></li>
-	<li><a href="#topic_31">Updating unavailable period for user</a></li>
-	<li><a href="#topic_32">Removing unavailable period for user</a></li>
-	<li><a href="#topic_33">Rating a user</a></li>
-	<li><a href="#topic_34">Getting the user rating</a></li>
-	<li><a href="#topic_35">Getting list of Countries</a></li>
-	<li><a href="#topic_36">Getting list of Cities for a given country</a></li>
-	<li><a href="#topic_37">Searching users by country name and city name</a></li>
-	<li><a href="#topic_38">Searching users by profession</a></li>
-	<li><a href="#topic_39">Searching users by global filter</a></li>
+<ul class="nav nav-pills">
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Account</span><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a data-toggle="pill" href="#topic_1">Registering an user</a></li>
+			<li><a data-toggle="pill" href="#topic_2">Getting a token</a></li>
+			<li><a data-toggle="pill" href="#topic_3">Getting info about the user</a></li>
+			<li><a data-toggle="pill" href="#topic_4">Updating user info</a></li>
+			<li><a data-toggle="pill" href="#topic_5">Changing a password</a></li>
+			<li><a data-toggle="pill" href="#topic_6">Removing user</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Contact</span><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a data-toggle="pill" href="#topic_7">Adding a contact number</a></li>
+			<li><a data-toggle="pill" href="#topic_8">Getting contact numbers for user</a></li>
+			<li><a data-toggle="pill" href="#topic_9">Updating a contact number</a></li>
+			<li><a data-toggle="pill" href="#topic_10">Removing a contact number</a></li>
+			<li><a data-toggle="pill" href="#topic_11">Adding a contact address</a></li>
+			<li><a data-toggle="pill" href="#topic_12">Getting contact addresses for user</a></li>
+			<li><a data-toggle="pill" href="#topic_13">Updating a contact address</a></li>
+			<li><a data-toggle="pill" href="#topic_14">Removing a contact address</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Profession</span><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a data-toggle="pill" href="#topic_15">Getting build-in enumerated professions list</a></li>
+			<li><a data-toggle="pill" href="#topic_16">Assigning profession to user</a></li>
+			<li><a data-toggle="pill" href="#topic_17">Getting assigned profession for user</a></li>
+			<li><a data-toggle="pill" href="#topic_18">Removing assigned profession from user</a></li>
+		</ul>
+	</li>
+	<li>
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Service</span><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a data-toggle="pill" href="#topic_19">Getting build-in enumerated currency list</a></li>
+			<li><a data-toggle="pill" href="#topic_20">Adding a service for the professions assigned to user</a></li>
+			<li><a data-toggle="pill" href="#topic_21">Getting list of services about a profession for user</a></li>
+			<li><a data-toggle="pill" href="#topic_22">Getting full list of services for user independent from profession</a></li>
+			<li><a data-toggle="pill" href="#topic_23">Updating a service offered by user</a></li>
+			<li><a data-toggle="pill" href="#topic_24">Removing a service offered by user</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Timeschedule</span><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a data-toggle="pill" href="#topic_25">Adding a work timeschedule for user</a></li>
+			<li><a data-toggle="pill" href="#topic_26">Getting work timeschedules for user</a></li>
+			<li><a data-toggle="pill" href="#topic_27">Updating a work timeschedule for user</a></li>
+			<li><a data-toggle="pill" href="#topic_28">Removing a work timeschedule for user</a></li>
+			<li><a data-toggle="pill" href="#topic_29">Adding a unavailable period for user</a></li>
+			<li><a data-toggle="pill" href="#topic_30">Getting unavailable periods for user in a given interval</a></li>
+			<li><a data-toggle="pill" href="#topic_31">Updating unavailable period for user</a></li>
+			<li><a data-toggle="pill" href="#topic_32">Removing unavailable period for user</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Rate</span><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a data-toggle="pill" href="#topic_33">Rating a user</a></li>
+			<li><a data-toggle="pill" href="#topic_34">Getting the user rating</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Search</span><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a data-toggle="pill" href="#topic_35">Getting list of Countries</a></li>
+			<li><a data-toggle="pill" href="#topic_36">Getting list of Cities for a given country</a></li>
+			<li><a data-toggle="pill" href="#topic_37">Searching users by country name and city name</a></li>
+			<li><a data-toggle="pill" href="#topic_38">Searching users by profession</a></li>
+			<li><a data-toggle="pill" href="#topic_39">Searching users by global filter</a></li>
+		</ul>
+	</li>
 </ul>
 
 <p>
@@ -55,7 +90,11 @@
 	&lt;&lt; Domain name &gt;&gt; will be used instead of domain name.
 </p>
 
-<h4 id="topic_1">Registering an user<h4>
+<div class="tab-content">
+
+<div class="tab-pane fade in active" id="topic_1">
+
+<h4>Registering an user<h4>
 
 <table>
 	<thead>
@@ -110,7 +149,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_2">Getting a token</h4>
+</div>
+<div class="tab-pane fade" id="topic_2">
+
+<h4>Getting a token</h4>
 
 <table>
 	<thead>
@@ -164,7 +206,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_3">Getting info about the user<h4>
+</div>
+<div class="tab-pane fade" id="topic_3">
+
+<h4>Getting info about the user<h4>
 
 <table>
 	<thead>
@@ -207,7 +252,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_4">Updating user info<h4>
+</div>
+<div class="tab-pane fade" id="topic_4">
+
+<h4>Updating user info<h4>
 
 <table>
 	<thead>
@@ -267,7 +315,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_5">Changing a password<h4>
+</div>
+<div class="tab-pane fade" id="topic_5">
+
+<h4>Changing a password<h4>
 
 <table>
 	<thead>
@@ -319,7 +370,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_6">Removing user<h4>
+</div>
+<div class="tab-pane fade" id="topic_6">
+
+<h4>Removing user<h4>
 
 <table>
 	<thead>
@@ -370,7 +424,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_7">Adding a contact number<h4>
+</div>
+<div class="tab-pane fade" id="topic_7">
+
+<h4>Adding a contact number<h4>
 
 <table>
 	<thead>
@@ -427,8 +484,10 @@
 	</tfooter>
 </table>
 
+</div>
+<div class="tab-pane fade" id="topic_8">
 
-<h4 id="topic_8">Getting contact numbers for user<h4>
+<h4>Getting contact numbers for user<h4>
 
 <table>
 	<thead>
@@ -476,7 +535,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_9">Updating a contact number<h4>
+</div>
+<div class="tab-pane fade" id="topic_9">
+
+<h4>Updating a contact number<h4>
 
 <table>
 	<thead>
@@ -538,7 +600,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_10">Removing a contact number<h4>
+</div>
+<div class="tab-pane fade" id="topic_10">
+
+<h4>Removing a contact number<h4>
 
 <table>
 	<thead>
@@ -580,7 +645,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_11">Adding a contact address<h4>
+</div>
+<div class="tab-pane fade" id="topic_11">
+
+<h4>Adding a contact address<h4>
 
 <table>
 	<thead>
@@ -648,8 +716,10 @@
 	</tfooter>
 </table>
 
+</div>
+<div class="tab-pane fade" id="topic_12">
 
-<h4 id="topic_12">Getting contact addresses for user<h4>
+<h4>Getting contact addresses for user<h4>
 
 <table>
 	<thead>
@@ -708,7 +778,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_13">Updating a contact address<h4>
+</div>
+<div class="tab-pane fade" id="topic_13">
+
+<h4>Updating a contact address<h4>
 
 <table>
 	<thead>
@@ -781,7 +854,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_14">Removing a contact address<h4>
+</div>
+<div class="tab-pane fade" id="topic_14">
+
+<h4>Removing a contact address<h4>
 
 <table>
 	<thead>
@@ -823,7 +899,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_15">Getting build-in enumerated professions list<h4>
+</div>
+<div class="tab-pane fade" id="topic_15">
+
+<h4>Getting build-in enumerated professions list<h4>
 
 <table>
 	<thead>
@@ -866,7 +945,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_16">Assigning profession to user<h4>
+</div>
+<div class="tab-pane fade" id="topic_16">
+
+<h4>Assigning profession to user<h4>
 
 <table>
 	<thead>
@@ -928,8 +1010,10 @@
 	</tfooter>
 </table>
 
+</div>
+<div class="tab-pane fade" id="topic_17">
 
-<h4 id="topic_17">Getting assigned profession for user<h4>
+<h4>Getting assigned profession for user<h4>
 
 <table>
 	<thead>
@@ -987,7 +1071,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_18">Removing assigned profession from user<h4>
+</div>
+<div class="tab-pane fade" id="topic_18">
+
+<h4>Removing assigned profession from user<h4>
 
 <table>
 	<thead>
@@ -1029,7 +1116,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_19">Getting build-in enumerated currency list<h4>
+</div>
+<div class="tab-pane fade" id="topic_19">
+
+<h4>Getting build-in enumerated currency list<h4>
 
 <table>
 	<thead>
@@ -1072,7 +1162,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_20">Adding a service for a profession assigned to user<h4>
+</div>
+<div class="tab-pane fade" id="topic_20">
+
+<h4>Adding a service for a profession assigned to user<h4>
 
 <table>
 	<thead>
@@ -1145,8 +1238,10 @@
 	</tfooter>
 </table>
 
+</div>
+<div class="tab-pane fade" id="topic_21">
 
-<h4 id="topic_21">Getting list of services about a profession for user<h4>
+<h4>Getting list of services about a profession for user<h4>
 
 <table>
 	<thead>
@@ -1219,7 +1314,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_22">Getting full list of services for user independent from profession<h4>
+</div>
+<div class="tab-pane fade" id="topic_22">
+
+<h4>Getting full list of services for user independent from profession<h4>
 
 <table>
 	<thead>
@@ -1288,7 +1386,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_23">Updating a service offered by user<h4>
+</div>
+<div class="tab-pane fade" id="topic_23">
+
+<h4>Updating a service offered by user<h4>
 
 <table>
 	<thead>
@@ -1365,7 +1466,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_24">Removing a service offered by user<h4>
+</div>
+<div class="tab-pane fade" id="topic_24">
+
+<h4>Removing a service offered by user<h4>
 
 <table>
 	<thead>
@@ -1407,7 +1511,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_25">Adding a work timeschedule for user<h4>
+</div>
+<div class="tab-pane fade" id="topic_25">
+
+<h4>Adding a work timeschedule for user<h4>
 
 <table>
 	<thead>
@@ -1474,8 +1581,10 @@
 	</tfooter>
 </table>
 
+</div>
+<div class="tab-pane fade" id="topic_26">
 
-<h4 id="topic_26">Getting work timeschedules for user<h4>
+<h4>Getting work timeschedules for user<h4>
 
 <table>
 	<thead>
@@ -1529,7 +1638,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_27">Updating a work timeschedule for user<h4>
+</div>
+<div class="tab-pane fade" id="topic_27">
+
+<h4>Updating a work timeschedule for user<h4>
 
 <table>
 	<thead>
@@ -1601,7 +1713,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_28">Removing a work timeschedule for user<h4>
+</div>
+<div class="tab-pane fade" id="topic_28">
+
+<h4>Removing a work timeschedule for user<h4>
 
 <table>
 	<thead>
@@ -1643,7 +1758,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_29">Adding a unavailable period for user<h4>
+</div>
+<div class="tab-pane fade" id="topic_29">
+
+<h4>Adding a unavailable period for user<h4>
 
 <table>
 	<thead>
@@ -1712,8 +1830,10 @@
 	</tfooter>
 </table>
 
+</div>
+<div class="tab-pane fade" id="topic_30">
 
-<h4 id="topic_30">Getting unavailable periods for user in a given interval<h4>
+<h4>Getting unavailable periods for user in a given interval<h4>
 
 <table>
 	<thead>
@@ -1807,7 +1927,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_31">Updating unavailable period for user<h4>
+</div>
+<div class="tab-pane fade" id="topic_31">
+
+<h4>Updating unavailable period for user<h4>
 
 <table>
 	<thead>
@@ -1881,7 +2004,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_32">Removing unavailable period for user<h4>
+</div>
+<div class="tab-pane fade" id="topic_32">
+
+<h4>Removing unavailable period for user<h4>
 
 <table>
 	<thead>
@@ -1923,7 +2049,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_33">Rating a user<h4>
+</div>
+<div class="tab-pane fade" id="topic_33">
+
+<h4>Rating a user<h4>
 
 <table>
 	<thead>
@@ -1978,8 +2107,10 @@
 	</tfooter>
 </table>
 
+</div>
+<div class="tab-pane fade" id="topic_34">
 
-<h4 id="topic_34">Getting the user rating<h4>
+<h4>Getting the user rating<h4>
 
 <table>
 	<thead>
@@ -2016,7 +2147,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_35">Getting list of Countries<h4>
+</div>
+<div class="tab-pane fade" id="topic_35">
+
+<h4>Getting list of Countries<h4>
 
 <table>
 	<thead>
@@ -2056,7 +2190,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_36">Getting list of Cities for a given country<h4>
+</div>
+<div class="tab-pane fade" id="topic_36">
+
+<h4>Getting list of Cities for a given country<h4>
 
 <table>
 	<thead>
@@ -2100,7 +2237,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_37">Searching users by country name and city name<h4>
+</div>
+<div class="tab-pane fade" id="topic_37">
+
+<h4>Searching users by country name and city name<h4>
 
 <table>
 	<thead>
@@ -2171,7 +2311,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_38">Searching users by profession<h4>
+</div>
+<div class="tab-pane fade" id="topic_38">
+
+<h4>Searching users by profession<h4>
 
 <table>
 	<thead>
@@ -2249,7 +2392,10 @@
 	</tfooter>
 </table>
 
-<h4 id="topic_39">Searching users by global filter<h4>
+</div>
+<div class="tab-pane fade" id="topic_39">
+
+<h4>Searching users by global filter<h4>
 
 <table>
 	<thead>
@@ -2322,3 +2468,7 @@
 		</tr>
 	</tfooter>
 </table>
+
+</div>
+
+</div>
