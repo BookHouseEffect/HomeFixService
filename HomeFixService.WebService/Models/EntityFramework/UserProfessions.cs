@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,6 +31,21 @@ namespace HomeFixService.WebService.Models.EntityFramework
             set
             {
                 _User = value;
+            }
+        }
+
+        [NonSerialized]
+        private List<ProfessionServices> _Services;
+
+        public virtual List<ProfessionServices> TheServicesConnectedWithThisProfession
+        {
+            get
+            {
+                return _Services;
+            }
+            set
+            {
+                _Services = value;
             }
         }
     }

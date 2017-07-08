@@ -22,6 +22,11 @@ namespace HomeFixService.WebService.Models.Context
         {
             base.OnModelCreating(modelBuilder);
         }
+
+        public DatabaseContext() : base(nameOrConnectionString: "HomeFixServicesDatabaseEntities")
+        {
+
+        }
     }
 
  }

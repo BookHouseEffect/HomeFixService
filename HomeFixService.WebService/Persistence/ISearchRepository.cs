@@ -2,11 +2,11 @@
 using HomeFixService.WebService.Models.Enums;
 using System.Collections.Generic;
 
-namespace HomeFixService.WebService.Services.Helpers
+namespace HomeFixService.WebService.Persistence
 {
-    interface SearchHelper
+    interface ISearchRepository
     {
-        List<Users> GetUsersBySearchCriteria(
+        List<Users> GetPagesUserListFilteredByCurrentLocationAndRating(
             string searchTerm,
             float currentLatitude,
             float currentLongitude,
@@ -14,7 +14,7 @@ namespace HomeFixService.WebService.Services.Helpers
             int pageNumber
         );
 
-        List<Users> GetUsersByProfessionCriteria(
+        List<Users> GetPagedUserListFilteredByProfessionAndCurrentLocationAndRating(
             ProfessionsEnum profession,
             string searchTerm,
             float currentLatitude,
@@ -23,7 +23,7 @@ namespace HomeFixService.WebService.Services.Helpers
             int pageNumber
         );
 
-        List<Users> GetUsersByCountryCityCriteria(
+        List<Users> GetPagedUserListFilteredByCountryAndCityAndRating(
             string countryName,
             string cityName,
             string searchTerm,
