@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
-    [Serializable]
+    //[Serializable]
     public class UserAddresses : BaseEntity
     {
         [Required(AllowEmptyStrings = false)]

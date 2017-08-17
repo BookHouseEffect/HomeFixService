@@ -5,7 +5,7 @@ using System;
 
 namespace HomeFixService.WebService.Models.EntityFramework
 {
-    [Serializable]
+    //[Serializable]
     public class Professions : BaseEnumEntity
     {  
         [Required, MaxLength(100)]
