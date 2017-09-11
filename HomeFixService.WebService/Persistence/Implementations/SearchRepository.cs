@@ -77,8 +77,8 @@ namespace HomeFixService.WebService.Persistence.Implementations
                                 y => new
                                 {
                                     Distance = SqlFunctions.SquareRoot(
-                                             SqlFunctions.Square(PiOver180 * (y.Longitude - longitude) * 
-                                                SqlFunctions.Cos(PiOver180 * (y.Latitude + latitude) / 2.0)) + 
+                                             SqlFunctions.Square(PiOver180 * (y.Longitude - longitude) *
+                                                SqlFunctions.Cos(PiOver180 * (y.Latitude + latitude) / 2.0)) +
                                              SqlFunctions.Square(PiOver180 * (y.Latitude - latitude))
                                         ) * R
                                 }
@@ -87,7 +87,7 @@ namespace HomeFixService.WebService.Persistence.Implementations
                             .Distance
                     }
                 ).OrderBy(x => x.Distance)
-                .ThenByDescending(x => (x.User.RatingSum / x.User.RatingCount))
+                .ThenByDescending(x => (x.User.RatingCount != 0 ? (x.User.RatingSum / x.User.RatingCount) : 0))
                 .Select(x => x.User);
         }
 
@@ -104,10 +104,10 @@ namespace HomeFixService.WebService.Persistence.Implementations
                                 )
                     );
 
-            return 
+            return
                 PagingQuery(
                     GeneralSearchTerm(firstQuery, searchTerm)
-                        .OrderByDescending(x => (x.RatingSum / x.RatingCount))
+                        .OrderByDescending(x => (x.RatingCount != 0 ? (x.RatingSum / x.RatingCount) : 0))
                     , pageNumber, pageSize
                 ).ToList();
         }
@@ -123,7 +123,7 @@ namespace HomeFixService.WebService.Persistence.Implementations
                                 .Any(
                                     y => y.ProfessionId == (int)profession
                                 )
-                    ); 
+                    );
 
             IQueryable<Users> searchTermFilteredQuery = GeneralSearchTerm(firstQuery, searchTerm);
             IQueryable<Users> locationAdjustedQuery = DistanceQuery(searchTermFilteredQuery, currentLatitude, currentLongitude);
@@ -133,7 +133,7 @@ namespace HomeFixService.WebService.Persistence.Implementations
 
         public List<Users> GetPagesUserListFilteredByCurrentLocationAndRating(string searchTerm, float currentLatitude, float currentLongitude, int pageSize, int pageNumber)
         {
-            return 
+            return
                 PagingQuery(
                     DistanceQuery(
                         GeneralSearchTerm(DatabaseContext.Users, searchTerm),
@@ -144,16 +144,16 @@ namespace HomeFixService.WebService.Persistence.Implementations
 
         public List<string> GetCountryList(string searchTerm)
         {
-            return 
+            return
                 DatabaseContext
                     .UserAddresses
                     .Where(
-                        x=>x.Country.Contains(searchTerm)
+                        x => x.Country.Contains(searchTerm)
                     ).Select(
                         p => p.Country
                     )
                     .Distinct()
-                    .OrderBy(x=>x)
+                    .OrderBy(x => x)
                     .ToList();
         }
 

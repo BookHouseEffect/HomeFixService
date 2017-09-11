@@ -42,6 +42,23 @@ namespace HomeFixService.WebService.Controllers
             return Ok(newUser);
         }
 
+        [HttpGet]
+        [Route("api/account/profile")]
+        public IHttpActionResult GetLoggedUser()
+        {
+            Users currentUser;
+            try
+            {
+                currentUser = GetUser();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(currentUser);
+        }
+
         [AllowAnonymous]
         [HttpGet]
         [Route("api/account/user")]

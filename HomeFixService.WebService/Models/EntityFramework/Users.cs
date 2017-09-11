@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -20,6 +21,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<Contacts> _Contacts;
 
+        [JsonIgnore]
         public virtual List<Contacts> TheContactsForThisUser
         {
             get
@@ -35,6 +37,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<Ratings> _Rating;
 
+        [JsonIgnore]
         public virtual List<Ratings> TheRatingsGivenForThisUser
         {
             get
@@ -50,6 +53,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<UserAddresses> _Address;
 
+        [JsonIgnore]
         public virtual List<UserAddresses> TheAddressesThatThisUserWorksOn
         {
             get
@@ -65,6 +69,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<UserProfessions> _Profession;
 
+        [JsonIgnore]
         public virtual List<UserProfessions> TheProfessionsThatThisUserKnows
         {
             get
@@ -80,6 +85,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<TimeSchedules> _Time;
 
+        [JsonIgnore]
         public virtual List<TimeSchedules> TheTimeScheduleForThisUser
         {
             get
@@ -95,6 +101,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<BusySchedules> _Busy;
 
+        [JsonIgnore]
         public virtual List<BusySchedules> TheBusyScheduleForThisUser
         {
             get

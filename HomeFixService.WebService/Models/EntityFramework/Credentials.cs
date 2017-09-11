@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,6 +28,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         private Users _User;
 
         [ForeignKey("UserId")]
+        [JsonIgnore]
         public virtual Users TheUserForThisCredential
         {
             get
@@ -42,6 +44,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<UserPasswordsHistory> _History;
 
+        [JsonIgnore]
         public virtual List<UserPasswordsHistory> TheHistoryForTheseCredentials
         {
             get

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,6 +29,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private Credentials _Credential;
 
+        [JsonIgnore]
         public virtual Credentials TheCredentialForThisHistory
         {
             get

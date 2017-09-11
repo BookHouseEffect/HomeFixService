@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -34,6 +35,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private UserProfessions _Profession;
 
+        [JsonIgnore]
         public virtual UserProfessions TheProfessionForThisService
         {
             get

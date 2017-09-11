@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,7 +20,8 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private Users _Owner;
 
-        [ForeignKey("UserId")] 
+        [ForeignKey("UserId")]
+        [JsonIgnore]
         public virtual Users ThePhoneOwner
         {
             get

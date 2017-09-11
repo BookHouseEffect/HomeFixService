@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         private Users _User;
 
         [ForeignKey("UserId")]
+        [JsonIgnore]
         public virtual Users TheUser
         {
             get
@@ -37,6 +39,7 @@ namespace HomeFixService.WebService.Models.EntityFramework
         [NonSerialized]
         private List<ProfessionServices> _Services;
 
+        [JsonIgnore]
         public virtual List<ProfessionServices> TheServicesConnectedWithThisProfession
         {
             get
